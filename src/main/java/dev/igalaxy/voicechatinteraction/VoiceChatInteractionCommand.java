@@ -5,14 +5,14 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.jspecify.annotations.NonNull;
 
 public class VoiceChatInteractionCommand implements CommandExecutor {
     @Override
-    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+    public boolean onCommand(@NonNull CommandSender sender, @NonNull Command command, @NonNull String label, String @NonNull [] args) {
         try {
-            if (sender instanceof Player) {
+            if (sender instanceof Player player) {
                 VoiceChatInteractionPlugin plugin = VoiceChatInteraction.voicechatPlugin;
-                Player player = (Player) sender;
 
                 if (args.length == 0) {
                     player.sendMessage("/voicechat_interaction toggle [<player>]");
@@ -33,7 +33,7 @@ public class VoiceChatInteractionCommand implements CommandExecutor {
                     }
                 }
             }
-        } catch(Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 

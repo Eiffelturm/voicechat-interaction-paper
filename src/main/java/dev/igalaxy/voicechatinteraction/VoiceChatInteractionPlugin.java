@@ -6,25 +6,21 @@ import de.maxhenkel.voicechat.api.events.MicrophonePacketEvent;
 import de.maxhenkel.voicechat.api.events.VoicechatServerStartedEvent;
 import de.maxhenkel.voicechat.api.opus.OpusDecoder;
 import org.bukkit.Bukkit;
-import org.bukkit.GameEvent;
 import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Player;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 
 import javax.annotation.Nullable;
-import java.util.Objects;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class VoiceChatInteractionPlugin implements VoicechatPlugin {
 
     public static VoicechatApi voicechatApi;
-    private static ConcurrentHashMap<UUID, Long> cooldowns;
-
     @Nullable
     public static VoicechatServerApi voicechatServerApi;
-
+    private static ConcurrentHashMap<UUID, Long> cooldowns;
     @Nullable
     private OpusDecoder decoder;
 
@@ -55,7 +51,7 @@ public class VoiceChatInteractionPlugin implements VoicechatPlugin {
             return;
         }
 
-        if (event.getPacket().getOpusEncodedData().length <= 0) {
+        if (event.getPacket().getOpusEncodedData().length == 0) {
             return;
         }
 

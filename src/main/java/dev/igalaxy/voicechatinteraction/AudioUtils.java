@@ -4,15 +4,15 @@ public class AudioUtils {
     /**
      * Calculates the audio level of a signal with specific samples.
      *
-     * @author henkelmax
      * @param samples the samples of the signal to calculate the audio level of
      * @return the audio level of the specified signal in db
+     * @author henkelmax
      */
     public static double calculateAudioLevel(short[] samples) {
         double rms = 0D; // root mean square (RMS) amplitude
 
-        for (int i = 0; i < samples.length; i++) {
-            double sample = (double) samples[i] / (double) Short.MAX_VALUE;
+        for (short value : samples) {
+            double sample = (double) value / (double) Short.MAX_VALUE;
             rms += sample * sample;
         }
 
